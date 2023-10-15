@@ -21,7 +21,7 @@ auto make_primes(size_t N) {
         if (!sieve[i]) primes.push_back(i);
     return primes;
 }
- 
+
 auto make_primes(size_t N) {
     vec<int> sieve(N + 1);
     for (size_t i = 2; (ll)i * i <= N; ++i) {
