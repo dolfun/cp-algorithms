@@ -9,9 +9,7 @@ auto make_sieve(size_t N) {
     vec<int> sieve(N + 1);
     for (size_t i = 2; (ll)i * i <= N; ++i) {
         if (sieve[i]) continue;
-        for (size_t x = 2 * i; x <= N; x += i) {
-            sieve[x] = static_cast<int>(i);
-        }
+        for (size_t x = 2 * i; x <= N; x += i) sieve[x] = i;
     }
     return sieve;
 }
