@@ -16,7 +16,7 @@ ll modinv(ll x) {
 
 ll modpow(ll x, ll n, ll mod) {
     if (n == 0) return 1;
-    ll res = modpow(x, n / 2);
+    ll res = modpow(x, n / 2, mod);
     res = (res * res) % mod;
     if (n % 2 == 1) res = (res * x) % mod;
     return res;
