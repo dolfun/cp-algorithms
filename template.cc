@@ -16,7 +16,7 @@ using ld = long double;
 using uint = unsigned int;
 using ull = unsigned long long;
 template <typename T> using vec = vector<T>;
-template <typename T, typename U>using pr = pair<T, U>;
+template <typename T, typename U> using pr = pair<T, U>;
 template <typename T, typename U>
 using umap = unordered_map<T, U>;
 
