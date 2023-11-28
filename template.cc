@@ -2,7 +2,7 @@
 #define fs first
 #define sn second
 #define pb push_back
-#define mp make_pair
+#define mkpr make_pair
 
 using namespace std;
 #if (__cplusplus >= 202002L)
