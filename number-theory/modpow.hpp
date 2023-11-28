@@ -25,3 +25,11 @@ ll modpow(ll x, ll n, ll mod) {
 ll modinv(ll x, ll mod) {
     return modpow(x, mod - 2);
 }
+
+ll intpow(ll x, ll n) {
+    if (n == 0) return 1;
+    ll res = intpow(x, n / 2);
+    res *= res;
+    if (n % 2 == 1) res *= x;
+    return res;
+}
