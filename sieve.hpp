@@ -1,9 +1,7 @@
-#pragma once
 #include <bits/stdc++.h>
 using namespace std;
 template <typename T>
 using vec = vector<T>;
-using ll = long long;
 
 auto make_sieve(size_t N) {
   vec<int> sieve(N + 1);
