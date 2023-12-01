@@ -1,4 +1,3 @@
-#pragma once
 using ll = long long;
 
 const ll mod = 1'000'000'007;
