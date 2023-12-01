@@ -21,7 +21,7 @@ template <typename T, typename U>
 using umap = unordered_map<T, U>;
 
 template <typename T>
-auto make_vec2d(size_t n, size_t m) {
+auto vec2d(size_t n, size_t m) {
   return vec<vec<T>>(n, vec<T>(m));
 }
 /*---------------------------------------------------------------------*/
