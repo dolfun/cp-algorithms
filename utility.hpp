@@ -27,3 +27,8 @@ void print(Arg&& arg, Args&&... args) {
   cout << std::forward<Arg>(arg);
   ((cout << ' ' << std::forward<Args>(args)), ...);
 }
+
+template <typename T, typename Func>
+T find_first_false(T l, T r, Func&& f) {
+  return *R::partition_point(V::iota(l, r), forward<F>(f));
+}
