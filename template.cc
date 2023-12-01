@@ -21,8 +21,23 @@ template <typename T, typename U>
 using umap = unordered_map<T, U>;
 
 template <typename T>
-auto vec2d(size_t n, size_t m) {
-  return vec<vec<T>>(n, vec<T>(m));
+ostream& operator<<(ostream& out, const vec<T>& v) {
+  for (const auto& x : v)
+    out << x << ' ';
+  return out;
+}
+
+template <typename T>
+istream& operator>>(istream& in, vec<T>& v) {
+  for (auto& x : v)
+    in >> x;
+  return in;
+}
+
+template <typename Arg, typename... Args>
+void print(Arg&& arg, Args&&... args) {
+  cout << std::forward<Arg>(arg);
+  ((cout << ' ' << std::forward<Args>(args)), ...);
 }
 /*---------------------------------------------------------------------*/
 
