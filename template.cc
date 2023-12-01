@@ -19,6 +19,11 @@ template <typename T> using vec = vector<T>;
 template <typename T, typename U> using pr = pair<T, U>;
 template <typename T, typename U>
 using umap = unordered_map<T, U>;
+
+template <typename T>
+auto make_vec2d(size_t n, size_t m) {
+  return vec<vec<T>>(n, vec<T>(m));
+}
 /*---------------------------------------------------------------------*/
 
 int main() {
