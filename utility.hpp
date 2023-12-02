@@ -31,7 +31,10 @@ void println(auto&&... args) {
   cout << '\n';
 }
 
-template <typename T, typename Func>
-T find_first_false(T l, T r, Func&& f) {
-  return *R::partition_point(V::iota(l, r), forward<Func>(f));
+auto find_first_false(auto l, auto r, auto&& f) {
+  return *R::partition_point(V::iota(l, r), forward<decltype(f)>(f));
+}
+
+auto find_last_true(auto l, auto r, auto&& f) {
+  return *R::partition_point(V::iota(l, r), forward<decltype(f)>(f)) - 1;
 }
