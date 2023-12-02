@@ -45,9 +45,7 @@ void println(auto&&... args) {
 }
 /*---------------------------------------------------------------------*/
 
-void solve() {
-  
-}
+void solve();
 
 int main() {
 #ifndef ONLINE_JUDGE
@@ -65,4 +63,8 @@ int main() {
   }
     
   return 0;
+}
+
+void solve() {
+  
 }
