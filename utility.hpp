@@ -22,10 +22,13 @@ istream& operator>>(istream& in, vec<T>& v) {
   return in;
 }
 
-template <typename Arg, typename... Args>
-void print(Arg&& arg, Args&&... args) {
-  cout << std::forward<Arg>(arg);
-  ((cout << ' ' << std::forward<Args>(args)), ...);
+void print(auto&&... args) {
+  ((cout << forward<decltype(args)>(args) << ' '), ...);
+}
+
+void println(auto&&... args) {
+  print(forward<decltype(args)>(args)...);
+  cout << '\n';
 }
 
 template <typename T, typename Func>
