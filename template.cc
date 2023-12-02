@@ -13,21 +13,22 @@ namespace V = views;
 using str = string;
 using ll = long long;
 using ld = long double;
+using ull = unsigned ll;
 using uint = unsigned int;
-using ull = unsigned long long;
-template <typename T> using vec = vector<T>;
-template <typename T, typename U> using pr = pair<T, U>;
-template <typename T, typename U>
+template <class T> using vec = vector<T>;
+template <class T, class U> using pr = pair<T, U>;
+template <class T, size_t N> using arr = array<T, N>;
+template <class T, class U>
 using umap = unordered_map<T, U>;
 
-template <typename T>
+template <class T>
 ostream& operator<<(ostream& out, const vec<T>& v) {
   for (const auto& x : v)
     out << x << ' ';
   return out;
 }
 
-template <typename T>
+template <class T>
 istream& operator>>(istream& in, vec<T>& v) {
   for (auto& x : v)
     in >> x;
