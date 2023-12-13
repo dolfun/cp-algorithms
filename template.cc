@@ -10,6 +10,11 @@ namespace R = ranges;
 namespace V = views;
 #endif
 
+#ifdef ONLINE_JUDGE
+#pragma GCC optimize("O3,unroll-loops")
+#pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
+#endif
+
 using str = string;
 using ll = long long;
 using ld = long double;
