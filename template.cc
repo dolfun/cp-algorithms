@@ -14,13 +14,17 @@ using uint = unsigned int;
 using ull = unsigned long long;
 
 #if (__cplusplus >= 202002L)
-template <typename T> requires ranges::range<T>
+template <typename T>
+concept Container = 
+   ranges::range<T> && !convertible_to<T, string>;
+
+template <Container T>
 ostream& operator<<(ostream& out, const T& r) {
   for (const auto& v : r) out << v << ' ';
   return out;
 }
 
-template <typename T> requires ranges::range<T>
+template <Container T>
 istream& operator>>(istream& in, T& r) {
   for (auto& v : r) in >> v;
   return in;
@@ -48,7 +52,7 @@ int main() {
   ios_base::sync_with_stdio(false);
   cin.tie(nullptr); cout.tie(nullptr);
 
-  int t;
+  int t{1};
   cin >> t;
   while (t--)
     solve();
