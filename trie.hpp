@@ -1,13 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
-template <typename T>
-using vec = vector<T>;
 
 struct Node {
   array<int, 26> next{};
   Node() { next.fill(-1); }
 };
-vec<Node> trie{{}};
+vector<Node> trie{{}};
 
 void add_string(string_view s) {
   int v = 0;

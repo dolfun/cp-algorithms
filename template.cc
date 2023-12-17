@@ -1,44 +1,31 @@
 #include <bits/stdc++.h>
 #define fs first
 #define sn second
-#define pb push_back
-#define mkpr make_pair
-
-using namespace std;
-#if (__cplusplus >= 202002L)
-namespace R = ranges;
-namespace V = views;
-#endif
 
 #ifdef ONLINE_JUDGE
-#pragma GCC optimize("O3,unroll-loops")
-#pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
+#pragma GCC optimize("O3, unroll-loops")
+#pragma GCC target("avx2, bmi, bmi2, lzcnt, popcnt")
 #endif
 
-using str = string;
+using namespace std;
 using ll = long long;
 using ld = long double;
-using ull = unsigned ll;
 using uint = unsigned int;
-template <class T> using vec = vector<T>;
-template <class T, class U> using pr = pair<T, U>;
-template <class T, size_t N> using arr = array<T, N>;
-template <class T, class U>
-using umap = unordered_map<T, U>;
+using ull = unsigned long long;
 
-template <class T>
-ostream& operator<<(ostream& out, const vec<T>& v) {
-  for (const auto& x : v)
-    out << x << ' ';
+#if (__cplusplus >= 202002L)
+template <typename T> requires ranges::range<T>
+ostream& operator<<(ostream& out, const T& r) {
+  for (const auto& v : r) out << v << ' ';
   return out;
 }
 
-template <class T>
-istream& operator>>(istream& in, vec<T>& v) {
-  for (auto& x : v)
-    in >> x;
+template <typename T> requires ranges::range<T>
+istream& operator>>(istream& in, T& r) {
+  for (auto& v : r) in >> v;
   return in;
 }
+#endif
 
 void print(auto&&... args) {
   ((cout << forward<decltype(args)>(args) << ' '), ...);
@@ -61,11 +48,9 @@ int main() {
   ios_base::sync_with_stdio(false);
   cin.tie(nullptr); cout.tie(nullptr);
 
-  int t{ 1 };
+  int t;
   cin >> t;
-  while (t--) {
-    solve();
-  }
+  while (t--) solve();
     
   return 0;
 }
