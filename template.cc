@@ -15,7 +15,8 @@ using ull = unsigned long long;
 
 struct safe_hash {
   ll operator()(ll x) const {
-    static const ll FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();
+    static const ll FIXED_RANDOM =
+      chrono::steady_clock::now().time_since_epoch().count();
     return x ^ FIXED_RANDOM;
   }
 };
