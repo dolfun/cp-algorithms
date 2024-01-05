@@ -13,6 +13,13 @@ using ld = long double;
 using uint = unsigned int;
 using ull = unsigned long long;
 
+struct safe_hash {
+  ll operator()(ll x) const {
+    static const ll FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();
+    return x ^ FIXED_RANDOM;
+  }
+};
+
 #if (__cplusplus >= 202002L)
 template <typename T>
 concept Container = 
