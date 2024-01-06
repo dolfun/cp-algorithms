@@ -13,6 +13,16 @@ using ld = long double;
 using uint = unsigned int;
 using ull = unsigned long long;
 
+#ifdef __GNUC__
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+template <typename T>
+using ordered_set = 
+  tree<T, null_type, less<T>,
+    rb_tree_tag, tree_order_statistics_node_update>;
+#endif
+
 #if (__cplusplus >= 202002L)
 template <integral T>
 struct safe_hash {
