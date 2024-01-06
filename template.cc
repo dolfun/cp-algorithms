@@ -13,18 +13,24 @@ using ld = long double;
 using uint = unsigned int;
 using ull = unsigned long long;
 
+#if (__cplusplus >= 202002L)
+template <integral T>
 struct safe_hash {
-  ll operator()(ll x) const {
-    static const ll FIXED_RANDOM =
+  T operator()(T x) const {
+    static const auto FIXED_RANDOM =
       chrono::steady_clock::now().time_since_epoch().count();
-    return x ^ FIXED_RANDOM;
+    return x ^ static_cast<T>(FIXED_RANDOM);
   }
 };
 
-#if (__cplusplus >= 202002L)
+template <typename T>
+using hash_set = unordered_set<T, safe_hash<T>>;
+template <typename Key, typename T>
+using hash_map = unordered_map<Key, T, safe_hash<Key>>;
+
 template <typename T>
 concept Container = 
-   ranges::range<T> && !convertible_to<T, string>;
+  ranges::range<T> && !convertible_to<T, string>;
 
 template <Container T>
 ostream& operator<<(ostream& out, const T& r) {
