@@ -13,6 +13,11 @@ using ld = long double;
 using uint = unsigned int;
 using ull = unsigned long long;
 
+template <typename T>
+using max_queue = priority_queue<T>;
+template <typename T>
+using min_queue = priority_queue<T, vector<T>, greater<T>>;
+
 #ifdef __GNUC__
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
