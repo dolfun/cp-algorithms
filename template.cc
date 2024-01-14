@@ -24,6 +24,8 @@ using ordered_set =
 #endif
 
 #if (__cplusplus >= 202002L)
+namespace rng = ranges;
+
 template <integral T>
 struct safe_hash {
   T operator()(T x) const {
@@ -40,7 +42,7 @@ using hash_map = unordered_map<Key, T, safe_hash<Key>>;
 
 template <typename T>
 concept Container = 
-  ranges::range<T> && !convertible_to<T, string>;
+  rng::range<T> && !convertible_to<T, string>;
 
 template <Container T>
 ostream& operator<<(ostream& out, const T& r) {
