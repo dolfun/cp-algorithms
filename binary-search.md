@@ -1,13 +1,13 @@
-#include <bits/stdc++.h>
-using namespace std;
-namespace rng = ranges;
+# Binary Search
 
-// [l, r] way
+## `[l, r]` way
+
+```cpp
 template <class T, class F>
 T find_first_false(T l, T r, F&& f) {
   --l; ++r;
   while (r - l > 1) {
-    auto m = l + (r - l) / 2;
+    T m = midpoint(l, r);
     if (f(m)) {
       l = m;
     } else {
@@ -16,13 +16,16 @@ T find_first_false(T l, T r, F&& f) {
   }
   return r;
 }
+```
 
-// (l, r) way
+## `(l, r)` way
+
+```cpp
 template <class T, class F>
 T find_first_false(T l, T r, F&& f) {
-  auto ans = -1;
+  T ans = -1;
   while (l <= r) {
-    auto m = l + (r - l) / 2;
+    T m = midpoint(l, r);
     if (f(m)) {
       l = m + 1;
     } else {
@@ -32,13 +35,16 @@ T find_first_false(T l, T r, F&& f) {
   }
   return ans;
 }
+```
 
-// [l, r) way
+## `[l, r)` way
+
+```cpp
 template <class T, class F>
 T find_first_false(T l, T r, F&& f) {
   ++r;
   while (l < r) {
-    auto m = l + (r - l) / 2;
+    T m = midpoint(l, r);
     if (f(m)) {
       l = m + 1;
     } else {
@@ -47,21 +53,13 @@ T find_first_false(T l, T r, F&& f) {
   }
   return r;
 }
+```
 
-// Binary Lifting
-template <class T, class F>
-T find_first_false(T l, T r, F&& f) {
-  if (l > r) return r + 1;
-  ++r;
-  T w = T(1) << __lg(r - l);
-  --l;
-  if (f(l + w)) l = r - w;
-  for (w >>= 1; w >= T(1); w >>= 1)
-    if (f(l + w)) l += w;
-  return l + 1;
-}
+## `C++20`
 
-// C++20
+```cpp
+using rng = ranges;
 auto find_first_false(auto l, auto r, auto&& f) {
   return *rng::partition_point(views::iota(l, r), forward<decltype(f)>(f));
 }
+```
