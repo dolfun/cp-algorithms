@@ -1,6 +1,6 @@
-#include <bits/stdc++.h>
-using namespace std;
+# Sieve of Eratosthenes
 
+```cpp
 auto make_sieve(size_t N) {
   vector<int> sieve(N + 1);
   for (size_t i = 2; i * i <= N; ++i) {
@@ -18,3 +18,4 @@ auto make_primes(size_t N) {
     if (!sieve[i]) primes.push_back(i);
   return primes;
 }
+```
