@@ -15,6 +15,8 @@ T gcd(T a, T b) {
 where d is `gcd(a, b)` and `x` and `y` are Bezout's coefficients of `a` and `b`,
 such that `ax + by = d`.
 
+[Explanation](https://cp-algorithms.com/algebra/extended-euclid-algorithm.html)
+
 ```cpp
 template <typename T>
 tuple<T, T, T> extended_gcd(T a, T b) {
@@ -28,7 +30,9 @@ tuple<T, T, T> extended_gcd(T a, T b) {
 }
 ```
 
-## Fast `gcd(a, b)` implementation
+## Binary GCD
+
+[Explanation](https://cp-algorithms.com/algebra/euclid-algorithm.html#binary-gcd)
 
 ```cpp
 [[gnu::target("popcnt")]]
