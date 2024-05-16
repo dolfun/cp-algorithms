@@ -13,36 +13,8 @@ using ld = long double;
 using uint = unsigned int;
 using ull = unsigned long long;
 
-template <typename T>
-using max_queue = priority_queue<T>;
-template <typename T>
-using min_queue = priority_queue<T, vector<T>, greater<T>>;
-
-#ifdef __GNUC__
-#include <ext/pb_ds/assoc_container.hpp>
-#include <ext/pb_ds/tree_policy.hpp>
-using namespace __gnu_pbds;
-template <typename T>
-using ordered_set = tree<T, null_type, less<T>,
-  rb_tree_tag, tree_order_statistics_node_update>;
-#endif
-
 #if (__cplusplus >= 202002L)
 namespace rng = ranges;
-
-template <integral T>
-struct safe_hash {
-  T operator()(T x) const {
-    static const auto FIXED_RANDOM =
-      chrono::steady_clock::now().time_since_epoch().count();
-    return x ^ static_cast<T>(FIXED_RANDOM);
-  }
-};
-
-template <typename T>
-using hash_set = unordered_set<T, safe_hash<T>>;
-template <typename Key, typename T>
-using hash_map = unordered_map<Key, T, safe_hash<Key>>;
 
 template <typename T>
 concept Container = 
