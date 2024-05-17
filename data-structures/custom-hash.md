@@ -13,7 +13,7 @@ struct custom_hash {
   uint64_t operator()(uint64_t x) const {
     static const auto FIXED_RANDOM =
       chrono::steady_clock::now().time_since_epoch().count();
-    return splitmix(x ^ FIXED_RANDOM);
+    return splitmix64(x ^ FIXED_RANDOM);
   }
 };
  
