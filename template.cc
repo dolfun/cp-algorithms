@@ -34,11 +34,11 @@ istream& operator>>(istream& in, T& r) {
 #endif
 
 void print(auto&&... args) {
-  ((cout << forward<decltype(args)>(args) << ' '), ...);
+  ((cout << std::forward<decltype(args)>(args) << ' '), ...);
 }
 
 void println(auto&&... args) {
-  print(forward<decltype(args)>(args)...);
+  print(std::forward<decltype(args)>(args)...);
   cout << '\n';
 }
 /*---------------------------------------------------------------------*/
