@@ -1,12 +1,4 @@
 #include <bits/stdc++.h>
-#define fs first
-#define sn second
-
-#ifdef ONLINE_JUDGE
-#pragma GCC optimize("O3,unroll-loops")
-#pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
-#endif
-
 using namespace std;
 using ll = long long;
 using ld = long double;
@@ -59,7 +51,7 @@ int main() {
   while (t--) {
     solve();
   }
-    
+
   return 0;
 }
 
