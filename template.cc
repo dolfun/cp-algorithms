@@ -1,39 +1,72 @@
 #include <bits/stdc++.h>
 using namespace std;
 using ll = long long;
-using ld = long double;
 using uint = unsigned int;
 using ull = unsigned long long;
-
-#if (__cplusplus >= 202002L)
 namespace rng = ranges;
 
-template <typename T>
-concept Container = 
+template <typename F>
+class y_combinator_result {
+  F f;
+
+public:
+  template <typename T>
+  explicit y_combinator_result(T&& _f) 
+    : f { std::forward<T>(_f) } {}
+
+  template <typename... Ts>
+  decltype(auto) operator()(Ts... args) {
+    return f(ref(*this), std::forward<Ts>(args)...);
+  }
+};
+
+template <typename F>
+decltype(auto) y_combinator(F&& f) {
+  return y_combinator_result<decay_t<F>> { std::forward<F>(f) };
+}
+
+namespace io {
+
+template <typename T> concept PrintableRange =
   rng::range<T> && !convertible_to<T, string>;
 
-template <Container T>
+template <PrintableRange T>
 ostream& operator<<(ostream& out, const T& r) {
   for (const auto& v : r) out << v << ' ';
   return out;
 }
 
-template <Container T>
+template <PrintableRange T>
 istream& operator>>(istream& in, T& r) {
   for (auto& v : r) in >> v;
   return in;
 }
-#endif
 
-void print(auto&&... args) {
-  ((cout << std::forward<decltype(args)>(args) << ' '), ...);
+template <typename... Ts>
+inline void print(Ts&&... args) {
+  ((cout << std::forward<Ts>(args) << ' '), ...);
 }
 
-void println(auto&&... args) {
-  print(std::forward<decltype(args)>(args)...);
+template <typename... Ts>
+inline void println(Ts&&... args) {
+  io::print(std::forward<Ts>(args)...);
   cout << '\n';
 }
-/*---------------------------------------------------------------------*/
+
+template <typename... Ts>
+inline void printf(std::format_string<Ts...> fmt, Ts&&... args) {
+  cout << format(fmt, std::forward<Ts>(args)...);
+}
+
+template <typename... Ts>
+inline void printfln(std::format_string<Ts...> fmt, Ts&&... args) {
+  io::printf(fmt, std::forward<Ts>(args)...);
+  cout << '\n';
+}
+
+}
+
+/*------------------------------have-fun------------------------------*/
 
 void solve();
 
@@ -44,7 +77,7 @@ int main() {
 #endif
 
   ios_base::sync_with_stdio(false);
-  cin.tie(nullptr); cout.tie(nullptr);
+  cin.tie(nullptr);
 
   int t{1};
   cin >> t;
