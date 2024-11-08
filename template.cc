@@ -25,8 +25,6 @@ decltype(auto) y_combinator(F&& f) {
   return y_combinator_result<decay_t<F>> { std::forward<F>(f) };
 }
 
-namespace io {
-
 template <typename T> concept PrintableRange =
   rng::range<T> && !convertible_to<T, string>;
 
@@ -41,6 +39,8 @@ istream& operator>>(istream& in, T& r) {
   for (auto& v : r) in >> v;
   return in;
 }
+
+namespace io {
 
 template <typename... Ts>
 inline void print(Ts&&... args) {
